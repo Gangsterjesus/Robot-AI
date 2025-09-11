@@ -1,65 +1,120 @@
-/* ========== Base Robot Styling ========== */
-.robot {
-  position: relative;
+/* 🔄 Reset and Base Layout */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  background: radial-gradient(circle at center, #0f0f0f, #000000);
+  font-family: 'Segoe UI', sans-serif;
+  color: #ffffff;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 🧠 Hero Section */
+#openbot-hero {
+  width: 100%;
+  max-width: 1400px;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  position: relative;
+  padding: 2rem;
+}
+
+/* 🤖 Robot Face Container */
+.face {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 80px rgba(0, 255, 255, 0.4);
+}
+
+/* 🖼️ Robot Image as Background */
+.robot-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('../assets/openbot-face.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+/* 👁️ Eye Overlays */
+.eyes {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 100px;
+  z-index: 2;
+}
+
+.eye {
+  width: 32px;
+  height: 32px;
+  background: cyan;
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.6);
   transition: transform 0.3s ease;
 }
 
-.robot img {
-  width: 100%;
-  max-width: 400px;
-  transition: transform 0.2s ease;
+/* 👄 Mouth Overlay */
+.mouth {
+  position: absolute;
+  bottom: 16%;
+  left: 50%;
+  width: 130px;
+  height: 32px;
+  background: gray;
+  border-radius: 16px;
+  transform: translateX(-50%);
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.3);
+  transition: transform 0.2s ease, background 0.2s ease;
+  z-index: 2;
 }
 
-/* ========== Speech Box ========== */
-.speech {
-  margin-top: 1rem;
-  padding: 0.75rem 1.25rem;
-  background-color: #222;
-  color: #fff;
-  font-family: 'Courier New', monospace;
-  font-size: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  max-width: 80%;
+/* 👀 Eye Movement States */
+#openbot-hero[data-look="left"] .eye {
+  transform: translateX(-20px);
+}
+#openbot-hero[data-look="right"] .eye {
+  transform: translateX(20px);
+}
+#openbot-hero[data-look="center"] .eye {
+  transform: translateX(0);
+}
+
+/* 🗣️ Lip Sync States */
+#openbot-hero[data-expression="talking"] .mouth {
+  background: red;
+  transform: scaleY(1.5);
+}
+#openbot-hero[data-expression="neutral"] .mouth {
+  background: gray;
+  transform: scaleY(1);
+}
+
+/* 💬 Status Text */
+#status-text {
+  font-size: 2.6rem;
   text-align: center;
-}
-
-/* ========== Expressions ========== */
-.robot[data-expression="happy"] img {
-  filter: hue-rotate(45deg);
-  animation: pulse 1.5s infinite;
-}
-
-.robot[data-expression="angry"] img {
-  filter: brightness(0.8) contrast(1.2);
-  animation: shake 0.5s infinite;
-}
-
-.robot[data-expression="neutral"] img {
-  filter: none;
-  animation: none;
-}
-
-/* ========== Eye Movement ========== */
-.robot[data-look="left"] img {
-  transform: translateX(-5px);
-}
-
-.robot[data-look="right"] img {
-  transform: translateX(5px);
-}
-
-/* ========== Animations ========== */
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  75% { transform: translateX(5px); }
+  color: #00ffff;
+  text-shadow: 0 0 12px rgba(0, 255, 255, 0.6);
+  z-index: 3;
 }

@@ -1,4 +1,3 @@
-// modules/eye.js
 export function trackEyeMovement() {
   const mascot = document.getElementById('openbot-hero');
 
