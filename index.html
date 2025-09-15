@@ -7,8 +7,16 @@
   <link rel="stylesheet" href="styles/main.css" />
 </head>
 <body>
-  <section id="openbot-hero" aria-label="OpenBot Mascot" data-look="center" data-expression="neutral">
-    <div class="face">
+  <section
+    id="openbot-hero"
+    aria-label="OpenBot Mascot"
+    data-look="center"
+    data-expression="neutral"
+    data-state="booting"
+  >
+    <h1 class="hero-title">Meet OpenBot</h1>
+
+    <div class="face" role="img" aria-label="Animated robot face">
       <img src="assets/openbot-face.png" alt="OpenBot Face" />
       <div class="eyes">
         <div class="eye left"></div>
@@ -16,7 +24,17 @@
       </div>
       <div class="mouth"></div>
     </div>
-    <div id="status-text">🤖 Initializing...</div>
+
+    <div id="status-text" aria-live="polite">🤖 Initializing...</div>
+
+    <div id="interaction-ui">
+      <button id="voice-toggle" aria-label="Activate voice interaction">🎙️ Speak</button>
+      <input
+        type="search"
+        placeholder="Ask OpenBot anything..."
+        aria-label="Search with OpenBot"
+      />
+    </div>
   </section>
 
   <script type="module" src="scripts/main.js"></script>
