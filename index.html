@@ -1,42 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="OpenBot: Your expressive, voice-powered mascot interface for search and interaction." />
   <title>OpenBot</title>
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="styles/main.css" />
 </head>
 <body>
-  <section
-    id="openbot-hero"
-    aria-label="OpenBot Mascot"
-    data-look="center"
-    data-expression="neutral"
-    data-state="booting"
-  >
-    <h1 class="hero-title">Meet OpenBot</h1>
+  <!-- 🧠 Hero Section: OpenBot Mascot UI -->
+  <main>
+    <header
+      id="openbot-hero"
+      aria-label="OpenBot Mascot"
+      data-look="center"
+      data-expression="neutral"
+      data-state="booting"
+      role="banner"
+    >
+      <h1 class="hero-title" role="heading" aria-level="1">Meet OpenBot</h1>
 
-    <div class="face" role="img" aria-label="Animated robot face">
-      <img src="assets/openbot-face.png" alt="OpenBot Face" />
-      <div class="eyes">
-        <div class="eye left"></div>
-        <div class="eye right"></div>
-      </div>
-      <div class="mouth"></div>
-    </div>
+      <!-- 🤖 Robot Face Container -->
+      <figure class="face" role="img" aria-label="Animated robot face">
+        <img src="assets/openbot-face.png" alt="OpenBot Face" />
+        <figcaption class="visually-hidden">OpenBot's animated face with expressive eyes and mouth</figcaption>
+        <div class="eyes" aria-hidden="true">
+          <div class="eye left"></div>
+          <div class="eye right"></div>
+        </div>
+        <div class="mouth" aria-hidden="true"></div>
+      </figure>
 
-    <div id="status-text" aria-live="polite">🤖 Initializing...</div>
+      <!-- 💬 Status Text: Live updates from OpenBot -->
+      <div id="status-text" aria-live="polite" role="status">🤖 Initializing...</div>
 
-    <div id="interaction-ui">
-      <button id="voice-toggle" aria-label="Activate voice interaction">🎙️ Speak</button>
-      <input
-        type="search"
-        placeholder="Ask OpenBot anything..."
-        aria-label="Search with OpenBot"
-      />
-    </div>
-  </section>
+      <!-- 🎙️ Interaction UI: Voice and Search -->
+      <form id="interaction-ui" role="search" aria-label="OpenBot voice and search interface">
+        <fieldset>
+          <legend class="visually-hidden">Voice and Search Controls</legend>
+          <button
+            id="voice-toggle"
+            aria-label="Activate voice interaction"
+            type="button"
+          >
+            🎙️ Speak
+          </button>
+          <input
+            type="search"
+            placeholder="Ask OpenBot anything..."
+            aria-label="Search with OpenBot"
+            name="query"
+          />
+        </fieldset>
+      </form>
+    </header>
+  </main>
 
+  <!-- 🚫 Fallback for No JavaScript -->
+  <noscript>
+    <p style="text-align: center; color: #ff4444;">
+      JavaScript is required to interact with OpenBot. Please enable it in your browser settings.
+    </p>
+  </noscript>
+
+  <!-- 📦 Main Script -->
   <script type="module" src="scripts/main.js"></script>
 </body>
 </html>
